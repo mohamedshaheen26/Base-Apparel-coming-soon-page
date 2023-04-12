@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Base Apparel coming soon page</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="left">
+        <div class="content">
+          <div class="logo">
+            <img src="images/logo.svg" alt="Logo" />
+          </div>
+          <div class="image">
+            <img src="images/hero-mobile.jpg" alt="Hero Mobile" />
+          </div>
+          <div class="intro-text">
+            <span>We're</span>
+            <h1>coming soon</h1>
+            <p>
+              Hello fellow shoppers! We're currently building our new fashion
+              store. Add your email below to stay up-to-date with announcements
+              and our launch deals.
+            </p>
+            <form class="form" action="" novalidate>
+              <input
+                class="email"
+                type="email"
+                name="email"
+                placeholder="Email Address"
+              />
+              <button class="submit">
+                <img src="images/icon-arrow.svg" alt="Arrow" />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <img src="images/hero-desktop.jpg" alt="Hero Mobile" />
+      </div>
+    </main>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </p>
+    </footer>
+    <script>
+      let container = document.querySelector(".form");
+      let input = document.querySelector(".email");
+      let btn = document.querySelector(".submit");
+
+      function createError(e) {
+        let error = document.createElement("img");
+        error.src = "images/icon-error.svg";
+        error.className = "error";
+
+        let errorMessage = document.createElement("span");
+        errorMessage.className = "errorMessage";
+        errorMessage.textContent = "Please Provide a valid email";
+
+        input.style.border = "2px solid red";
+
+        container.appendChild(errorMessage);
+        container.appendChild(error);
+        e.preventDefault();
+      }
+
+      btn.addEventListener("click", (e) => {
+        let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if (input.value.match(regex)) {
+          return true;
+        } else {
+          e.preventDefault();
+          createError();
+        }
+      });
+    </script>
+  </body>
+</html>
